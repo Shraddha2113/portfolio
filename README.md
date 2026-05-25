@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -535,9 +535,8 @@
   <h2 class="section-title">Let's make something <span class="highlight">amazing</span> together.</h2>
   <p>Have a project in mind? I'd love to hear about it. Drop a message and I'll get back to you soon.</p>
   <div class="contact-grid">
-    <a href="mailto:hello@shraddhacreates.com" class="contact-pill"><span>✉️</span> hello@shraddhacreates.com</a>
-    <a href="https://instagram.com/shraddhacreates" class="contact-pill" target="_blank"><span>📸</span> @shraddhacreates</a>
-    <a href="https://linkedin.com" class="contact-pill" target="_blank"><span>💼</span> LinkedIn</a>
+    <a href="mailto:dshraddha515@gmail.com" class="contact-pill"><span>✉️</span>dshraddha515@gmail.com</a>
+    <a href="https://www.linkedin.com/in/shraddha-dubey-1234qwer/" class="contact-pill" target="_blank"><span>💼</span> LinkedIn</a>
   </div>
   <form class="contact-form" onsubmit="handleSubmit(event)">
     <div class="form-row">
