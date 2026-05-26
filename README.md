@@ -402,7 +402,7 @@
         <span class="section-tag">My Work</span>
         <h2 class="section-title">Selected Projects</h2>
       </div>
-      <button class="btn-outline" onclick="openAddModal()" style="font-family:'DM Sans',sans-serif;cursor:pointer;">+ Add Project</button>
+      <button class="btn-outline" onclick="openAddModal()" id="addProjectBtn" style="font-family:'DM Sans',sans-serif;cursor:pointer;display:none;">+ Add Project</button>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
   </div>
@@ -433,7 +433,7 @@
 
 <footer><p>© 2025 <span>shraddhacreates</span> — Made with 💛 and strategy.</p></footer>
 
-<button class="edit-banner" onclick="toggleEditMode()" id="editBtn">✏️ Edit Mode</button>
+<button class="edit-banner" onclick="toggleEditMode()" id="editBtn" style="display:none;">✏️ Edit Mode</button>
 
 <!-- CASE STUDY MODAL -->
 <div class="case-overlay" id="caseOverlay" onclick="closeCaseOnOverlay(event)">
@@ -534,11 +534,13 @@ function renderProjects() {
     `;
     grid.appendChild(card);
   });
-  const addCard = document.createElement('div');
-  addCard.className = 'add-project-card';
-  addCard.onclick = openAddModal;
-  addCard.innerHTML = '<div class="add-icon">+</div><span style="font-size:.9rem;font-weight:500">Add a new project</span>';
-  grid.appendChild(addCard);
+  if (editMode) {
+    const addCard = document.createElement('div');
+    addCard.className = 'add-project-card';
+    addCard.onclick = openAddModal;
+    addCard.innerHTML = '<div class="add-icon">+</div><span style="font-size:.9rem;font-weight:500">Add a new project</span>';
+    grid.appendChild(addCard);
+  }
 }
 
 // ── Case Study ──
@@ -641,12 +643,39 @@ function closeCaseOnOverlay(e) {
 
 // ── Edit Mode ──
 function toggleEditMode() {
-  editMode = !editMode;
-  const btn = document.getElementById('editBtn');
-  btn.textContent = editMode ? '👁️ View Mode' : '✏️ Edit Mode';
-  btn.style.background = editMode ? '#6BCB77' : '';
-  renderProjects();
+  var pwd = prompt('Enter password:');
+  if (pwd === 'shraddha@creates2025') {
+    editMode = !editMode;
+    const btn = document.getElementById('editBtn');
+    const addBtn = document.getElementById('addProjectBtn');
+    if (editMode) {
+      btn.style.display = 'flex';
+      btn.textContent = '👁️ View Mode';
+      btn.style.background = '#6BCB77';
+      if (addBtn) addBtn.style.display = 'inline-block';
+    } else {
+      btn.style.display = 'none';
+      if (addBtn) addBtn.style.display = 'none';
+    }
+    renderProjects();
+  } else if (pwd !== null) {
+    alert('Incorrect password.');
+  }
 }
+
+// Secret keyboard shortcut: press E then hold Shift+E to open edit mode
+let _eCount = 0, _eTimer;
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'E' && e.shiftKey) {
+    _eCount++;
+    clearTimeout(_eTimer);
+    _eTimer = setTimeout(() => _eCount = 0, 1500);
+    if (_eCount >= 3) {
+      _eCount = 0;
+      toggleEditMode();
+    }
+  }
+});
 
 function openAddModal() {
   editingIndex = -1;
