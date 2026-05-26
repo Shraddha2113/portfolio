@@ -352,7 +352,7 @@
     <div class="contact-grid">
       <a href="mailto:dshraddha515@gmail.com" class="contact-pill"><span>✉️</span> dshraddha515@gmail.com</a>
       <a href="https://instagram.com/shraddhhaha" class="contact-pill" target="_blank"><span>📸</span> @shraddhhaha</a>
-      <a href="https://linkedin.com" class="contact-pill" target="_blank"><span>💼</span> LinkedIn</a>
+      <a href="https://linkedin.com" class="contact-pill" target="_blank"><span>💼</span> https://www.linkedin.com/in/shraddha-dubey-1234qwer/</a>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
