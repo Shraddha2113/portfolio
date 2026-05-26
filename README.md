@@ -89,15 +89,25 @@
 
   /* ABOUT */
   #about { background: white; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .about-left {}
-  .about-left p { color: #555; line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.97rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-col { min-width: 0; }
+  .about-col p { color: #555; line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.97rem; }
+  .about-col-right { display: flex; flex-direction: column; gap: 1.2rem; }
+  .about-quote-card { background: var(--dark); border-radius: 20px; padding: 1.8rem; border: 2px solid var(--dark); }
+  .about-quote-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .about-quote-text { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.88); font-style: italic; margin-bottom: 0.8rem; }
+  .about-quote-name { font-size: 0.82rem; color: var(--yellow); font-weight: 600; }
+  .about-passion-card { background: white; border-radius: 20px; padding: 1.6rem; border: 2px solid var(--dark); box-shadow: 4px 4px 0 var(--dark); display: flex; flex-direction: column; gap: 1.1rem; }
+  .about-passion-row { display: flex; align-items: flex-start; gap: 0.9rem; }
+  .about-passion-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .about-passion-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 0.2rem; }
+  .about-passion-value { font-size: 0.9rem; color: #444; font-weight: 500; }
   .about-skills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
   .skill-chip { padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.82rem; font-weight: 500; border: 1.5px solid var(--dark); transition: transform 0.15s; cursor: default; }
   .skill-chip:hover { transform: translateY(-2px); }
   .chip-coral{background:#FFE5E5;color:#c0392b;} .chip-yellow{background:#FFF8D6;color:#8a6d00;} .chip-mint{background:#E5F7E8;color:#1e7a2f;} .chip-lavender{background:#F2E0FF;color:#6a0dad;} .chip-sky{background:#E0F5FF;color:#0277a8;}
 
-  .about-right {}
+  
   .about-stat-card { background: var(--cream); border-radius: 20px; border: 2px solid var(--dark); padding: 1.8rem; margin-bottom: 1.2rem; box-shadow: 4px 4px 0 var(--dark); }
   .about-stat-card h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--coral); margin-bottom: 0.2rem; }
   .about-stat-card p { font-size: 0.88rem; color: #666; }
@@ -236,15 +246,60 @@
   .btn-cancel:hover { border-color:var(--dark); }
 
   @media(max-width:900px) {
-    .hero-inner { grid-template-columns:1fr; }
-    .hero-photo-wrap { display:none; }
-    .about-grid { grid-template-columns:1fr; gap:2.5rem; }
-    .case-two-col { grid-template-columns:1fr; }
-    .posts-grid { grid-template-columns:1fr; }
-    .results-grid { grid-template-columns:1fr; }
-    .form-row { grid-template-columns:1fr; }
-    .nav-links { display:none; }
-    section { padding:4rem 1.5rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+
+    /* Hero */
+    #hero { padding: 6rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-photo-wrap { display: flex; justify-content: center; order: -1; }
+    .hero-photo { width: 200px; height: 260px; }
+    .hero-photo-badge { bottom: -14px; left: -10px; font-size: 0.7rem; padding: 0.6rem 0.8rem; }
+    .hero-title { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+    .hero-sub { font-size: 0.96rem; }
+    .hero-btns { gap: 0.8rem; }
+    .btn-primary, .btn-outline { padding: 0.75rem 1.5rem; font-size: 0.88rem; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    /* Projects */
+    .projects-grid { grid-template-columns: 1fr; }
+    .projects-header { flex-direction: column; align-items: flex-start; }
+
+    /* Case study */
+    .case-two-col { grid-template-columns: 1fr; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .case-modal { border-radius: 20px; }
+    .case-hero-band { padding: 1.8rem 1.5rem 1.5rem; }
+    .case-section { padding: 1.4rem 1.5rem; }
+    .case-title { font-size: 1.5rem; }
+
+    /* Contact */
+    .contact-grid { flex-direction: column; align-items: stretch; }
+    .contact-pill { justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Section titles */
+    .section-title { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+
+    /* Edit button */
+    .edit-banner { bottom: 1rem; right: 1rem; font-size: 0.78rem; padding: 0.55rem 1rem; }
+  }
+  @media(max-width: 480px) {
+    .hero-photo { width: 160px; height: 210px; }
+    .results-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.6rem; }
+    .about-passion-card { padding: 1.2rem; }
+    .about-quote-card { padding: 1.4rem; }
+  }
+  @media(max-width:480px) {
+    .hero-photo { width:180px; height:230px; }
+    .about-stat-row { grid-template-columns:1fr; }
+    .section-title { font-size:1.8rem; }
+    .case-title { font-size:1.5rem; }
   }
 </style>
 </head>
@@ -271,7 +326,7 @@
     <div class="hero-text">
       <div class="hero-tag">✨ Marketing Portfolio</div>
       <h1 class="hero-title">Creative<br><span class="highlight">Marketing</span><br>That Converts.</h1>
-      <p class="hero-sub">Hi there! I am Shraddha — a marketer in the making.<br><br>I love exploring how brands tell stories, connect with communities, and create experiences that make people stop scrolling.</p>
+      <p class="hero-sub">Hi there! I am Shraddha — a marketer in the making.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">See My Work →</a>
         <a href="#contact" class="btn-outline">Let's Talk</a>
@@ -289,7 +344,7 @@
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-left">
+      <div class="about-col">
         <span class="section-tag">About Me</span>
         <h2 class="section-title">Marketing is storytelling with a strategy.</h2>
         <p>I'm an aspiring digital marketer who believes the best campaigns don't just sell — they create genuine connections between brands and people. I blend data-driven thinking with vibrant, on-brand content that resonates.</p>
@@ -305,24 +360,34 @@
           <span class="skill-chip chip-mint">Creative Direction</span>
         </div>
       </div>
-      <div class="about-right">
-        <div class="about-stat-row">
-          <div class="about-stat-card">
-            <h3>3+</h3>
-            <p>Marketing Projects Completed</p>
-          </div>
-          <div class="about-stat-card">
-            <h3>100%</h3>
-            <p>Passion for Creative Strategy</p>
-          </div>
+      <div class="about-col about-col-right">
+        <div class="about-quote-card">
+          <div class="about-quote-icon">✨</div>
+          <p class="about-quote-text">"I love exploring how brands tell stories, connect with communities, and create experiences that make people stop scrolling."</p>
+          <p class="about-quote-name">— Shraddha</p>
         </div>
-        <div class="about-stat-card">
-          <h3>✨</h3>
-          <p>Specialising in social media growth, campaign building, and creative copywriting that makes brands unforgettable.</p>
-        </div>
-        <div class="about-stat-card" style="background:var(--dark);color:white;border-color:var(--dark);">
-          <p style="font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.85);">"I love exploring how brands tell stories, connect with communities, and create experiences that make people stop scrolling."</p>
-          <p style="margin-top:0.8rem;font-size:0.8rem;color:var(--yellow);font-weight:600;">— Shraddha</p>
+        <div class="about-passion-card">
+          <div class="about-passion-row">
+            <div class="about-passion-icon">🎯</div>
+            <div>
+              <div class="about-passion-label">Specialisation</div>
+              <div class="about-passion-value">Social Media Growth &amp; Campaign Strategy</div>
+            </div>
+          </div>
+          <div class="about-passion-row">
+            <div class="about-passion-icon">✍️</div>
+            <div>
+              <div class="about-passion-label">Craft</div>
+              <div class="about-passion-value">Creative Copywriting &amp; Content Creation</div>
+            </div>
+          </div>
+          <div class="about-passion-row">
+            <div class="about-passion-icon">🚀</div>
+            <div>
+              <div class="about-passion-label">Status</div>
+              <div class="about-passion-value">Open to opportunities &amp; collaborations</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -352,7 +417,7 @@
     <div class="contact-grid">
       <a href="mailto:dshraddha515@gmail.com" class="contact-pill"><span>✉️</span> dshraddha515@gmail.com</a>
       <a href="https://instagram.com/shraddhhaha" class="contact-pill" target="_blank"><span>📸</span> @shraddhhaha</a>
-      <a href="https://linkedin.com" class="contact-pill" target="_blank"><span>💼</span> https://www.linkedin.com/in/shraddha-dubey-1234qwer/</a>
+      <a href="https://linkedin.com" class="contact-pill" target="_blank"><span>💼</span> LinkedIn</a>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
